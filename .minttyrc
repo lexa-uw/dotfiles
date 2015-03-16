@@ -1,0 +1,7 @@
+BoldAsFont=no
+FontHeight=12
+FontSmoothing=default
+Columns=156
+Rows=37
+ScrollbackLines=10000000
+Term=xterm-256color
