@@ -1623,7 +1623,7 @@ nnoremap <silent>[menu]c :Unite -silent menu:colorv<CR>
 " vim menu {{{
 let g:unite_source_menu_menus.vim = {
     \ 'description' : '            vim
-        \                                                   ⌘ [space]v',
+        \                                                   [space]v',
     \}
 let g:unite_source_menu_menus.vim.command_candidates = [
     \['• choose colorscheme',
@@ -1680,13 +1680,13 @@ let g:unite_source_menu_menus.db.command_candidates = [
         \'exe "Alter" " ".input("ALTER")'],
     \['• SQL CREATE statement',
         \'exe "Create" " ".input("CREATE")'],
-    \['• List all Tables                                            ⌘ ,Slt',
+    \['• List all Tables                                            ,Slt',
         \'DBListTable'],
-    \['• List all Procedures                                        ⌘ ,Slp',
+    \['• List all Procedures                                        ,Slp',
         \'DBListProcedure'],
-    \['• List all Views                                             ⌘ ,Slv',
+    \['• List all Views                                             ,Slv',
         \'DBListView'],
-    \['• List all Variables                                         ⌘ ,Svr',
+    \['• List all Variables                                         ,Svr',
         \'DBListVar'],
     \['• DBext Get Options',
         \'DBGetOption'],
