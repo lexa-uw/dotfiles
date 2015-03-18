@@ -319,6 +319,12 @@ NeoBundle 'nginx.vim', {'autoloaad': {'filetypes': ['nginx']}}
 
 " }}}
 
+" puppet {{{
+
+NeoBundle 'rodjek/vim-puppet'
+
+" }}}
+
 " END BUNDLES }}}
 
 call neobundle#end()
@@ -2028,6 +2034,13 @@ augroup END
 
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* 
     \ if &ft == '' | setfiletype nginx | endif
+
+" }}}
+
+" puppet {{{
+
+au BufRead,BufNewFile /etc/puppet/*.conf \
+    if &ft == '' | setfiletype dosini | endif
 
 " }}}
 
