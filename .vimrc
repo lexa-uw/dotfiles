@@ -313,6 +313,12 @@ NeoBundleLazy 't-yuki/vim-go-coverlay', {'autoloaad': {'filetypes': ['go']}}
 
 " }}}
 
+" nginx {{{
+
+NeoBundle 'nginx.vim', {'autoloaad': {'filetypes': ['nginx']}}
+
+" }}}
+
 " END BUNDLES }}}
 
 call neobundle#end()
@@ -2015,6 +2021,13 @@ au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 augroup go_autocmd
     autocmd FileType go set foldmethod=syntax
 augroup END
+
+" }}}
+
+" nginx {{{
+
+au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* 
+    \ if &ft == '' | setfiletype nginx | endif
 
 " }}}
 
