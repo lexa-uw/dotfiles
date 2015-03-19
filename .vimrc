@@ -2039,8 +2039,8 @@ au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/*
 
 " puppet {{{
 
-au BufRead,BufNewFile /etc/puppet/*.conf \
-    if &ft == '' | setfiletype dosini | endif
+au BufRead,BufNewFile /etc/puppet/*.conf 
+    \ if &ft == '' | setfiletype dosini | endif
 
 " }}}
 
