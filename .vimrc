@@ -2030,6 +2030,13 @@ augroup END
 
 " }}}
 
+" PHP {{{
+
+autocmd BufRead,BufNewFile /etc/php/*.conf set syntax=dosini
+autocmd BufRead,BufNewFile /etc/php/*.ini set syntax=dosini
+
+" }}}
+
 " nginx {{{
 
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* 
