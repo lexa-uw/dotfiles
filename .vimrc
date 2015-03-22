@@ -64,7 +64,7 @@ NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources':
             \ ['quickfix', 'location_list']}}
 NeoBundleLazy 'osyo-manga/unite-fold', {'autoload':{'unite_sources':'fold'}}
 NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
-NeoBundleLazy 'Shougo/neomru.vim', {'autoload':{'unite_sources': 
+NeoBundleLazy 'Shougo/neomru.vim', {'autoload':{'unite_sources':
             \['file_mru', 'directory_mru']}}
 
 " Junk files
@@ -126,7 +126,7 @@ NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'],
 " Markdown Syntax
 NeoBundleLazy 'joedicastro/vim-markdown'
 " reStructuredText in vim. Your personal Wiki in RST
-NeoBundleLazy 'Rykka/riv.vim', {'autoload': {'filetypes': ['rst']}} 
+NeoBundleLazy 'Rykka/riv.vim', {'autoload': {'filetypes': ['rst']}}
 
 " }}}
 
@@ -148,8 +148,8 @@ NeoBundleLazy 'klen/python-mode', {'autoload': {'filetypes': ['python']}}
 " Admin virtualenvs
 NeoBundle 'jmcantrell/vim-virtualenv'
 " Show indent lines
-NeoBundleLazy 'Yggdroot/indentLine', {'autoload': 
-            \ {'filetypes': ['python', 'php', 'phtml', 'json', 
+NeoBundleLazy 'Yggdroot/indentLine', {'autoload':
+            \ {'filetypes': ['python', 'php', 'phtml', 'json',
             \ 'html', 'xhtml', 'js', 'rst', 'md', 'css', 'nginx']}}
 " Show reports from coverage.py
 NeoBundleLazy 'alfredodeza/coveragepy.vim', {'autoload': {'filetypes': ['python']}}
@@ -193,8 +193,7 @@ NeoBundle 'tpope/vim-surround'
 " NeoBundle 'tpope/vim-repeat'
 "
 " toggle comments
-" NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tomtom/tcomment_vim', { 'autoload' : {'commands': 'TComment'} }
 " smart digraphs insertion
 NeoBundle 'Rykka/easydigraph.vim'
 " browse the vim undo tree
@@ -209,13 +208,6 @@ NeoBundleLazy 'salsifis/vim-transpose', { 'autoload' :
             \ { 'commands' : 'Transpose'}}
 " marks admin
 NeoBundle 'kshenoy/vim-signature'
-" " text-objects
-" NeoBundle 'kana/vim-textobj-entire' " ae, ie
-" NeoBundle 'kana/vim-textobj-indent' " ai, ii, aI, iI
-" NeoBundle 'kana/vim-textobj-lastpat' " a/, i/, a?, i?
-" NeoBundle 'kana/vim-textobj-line' " al, il
-" NeoBundle 'kana/vim-textobj-underscore' " a_, i_
-" NeoBundle 'kana/vim-textobj-user'
 
 " }}}
 
@@ -279,13 +271,15 @@ NeoBundle  'Lokaltog/vim-easymotion'
 
 " majutsushi/tagbar {{{
 
-NeoBundle  'majutsushi/tagbar'
+NeoBundleLazy  'majutsushi/tagbar', {'autoload':
+            \ {'filetypes': ['go', 'python', 'php']}} 
 
 " }}}
 
 " othree/xml.vim {{{
 
-NeoBundle  'othree/xml.vim'
+NeoBundleLazy 'othree/xml.vim', {'autoload':
+            \ {'filetypes': ['xml', 'sgml', 'xslt']}}   
 
 " }}}
 
@@ -297,31 +291,32 @@ NeoBundle 'AndrewRadev/splitjoin.vim'
 
 " PHP {{{
 
-NeoBundle 'joshtronic/php.vim'
-NeoBundle 'tagbar-phpctags'
-NeoBundle 'pdv-standalone'
-NeoBundle 'm2mdas/phpcomplete-extended'
-NeoBundle 'evidens/vim-twig'
+NeoBundleLazy 'joshtronic/php.vim', {'autoload': {'filetypes': ['php']}}
+NeoBundleLazy 'tagbar-phpctags', {'autoload': {'filetypes': ['php']}}
+NeoBundleLazy 'pdv-standalone', {'autoload': {'filetypes': ['php']}}
+NeoBundleLazy 'm2mdas/phpcomplete-extended',
+            \ {'autoload': {'filetypes': ['php']}}
+NeoBundleLazy 'evidens/vim-twig', {'depends': ['joshtronic/php.vim']}
 
 " }}}
 
 " GO {{{
 
-NeoBundle 'fatih/vim-go', {'autoloaad': {'filetypes': ['go']}}
-NeoBundleLazy 'nsf/gocode', {'autoloaad': {'filetypes': ['go']}} 
-NeoBundleLazy 't-yuki/vim-go-coverlay', {'autoloaad': {'filetypes': ['go']}} 
+NeoBundleLazy 'fatih/vim-go', {'autoload': {'filetypes': ['go']}}
+NeoBundleLazy 'nsf/gocode', {'autoload': {'filetypes': ['go']}}
+NeoBundleLazy 't-yuki/vim-go-coverlay', {'autoload': {'filetypes': ['go']}}
 
 " }}}
 
 " nginx {{{
 
-NeoBundle 'nginx.vim', {'autoloaad': {'filetypes': ['nginx']}}
+NeoBundle 'nginx.vim', {'autoload': {'filetypes': ['nginx']}}
 
 " }}}
 
 " puppet {{{
 
-NeoBundle 'rodjek/vim-puppet'
+NeoBundle 'rodjek/vim-puppet', {'autoload': {'filetypes': ['puppet']}}
 
 " }}}
 
@@ -458,24 +453,24 @@ set softtabstop=4              " a soft-tab of four spaces
 set autoindent                 " set on the auto-indent
 set smarttab
 
-" Last tab toggle 
+" Last tab toggle
 let g:lasttab = 1
 au TabLeave * let g:lasttab = tabpagenr()
 nmap <Leader>ta :exe "tabn ".g:lasttab<CR>
-imap <F2> <Esc> :exe "tabn ".g:lasttab<CR>       
+imap <F2> <Esc> :exe "tabn ".g:lasttab<CR>
 map  <F2> :exe "tabn ".g:lasttab<CR>
 
 " New tab
 map  <Leader>tt <Esc>:browse tabnew<CR>
 
-" Go to prev tab 
+" Go to prev tab
 map  <Leader>tp :tabprev <CR>
-imap <F3> <Esc> :tabprev <CR>       
+imap <F3> <Esc> :tabprev <CR>
 map  <F3> :tabprev <CR>
 
-" Go to next tab 
+" Go to next tab
 map  <Leader>tn :tabnext <CR>
-imap <F4> <Esc> :tabnext <CR>       
+imap <F4> <Esc> :tabnext <CR>
 map  <F4> :tabnext <CR>
 
 " Move tabs
@@ -492,7 +487,7 @@ function MoveTabRight()
     execute 'tabmove' current_tab
 endfunction
 
-map <Leader>tl :call MoveTabLeft()<CR> 
+map <Leader>tl :call MoveTabLeft()<CR>
 map <Leader>tr :call MoveTabRight()<CR>
 
 " set formatoptions=qrn1ct
@@ -971,7 +966,7 @@ autocmd FileType git set nofoldenable
 
 " }}}
 
-" Gundo {{{ 
+" Gundo {{{
 
 nnoremap <Leader>u :GundoToggle<CR>
 
@@ -1009,7 +1004,7 @@ let g:neocomplete#data_directory = $HOME.'/.vim/tmp/neocomplete'
 " disable the auto select feature by default to speed up writing without
 " obstacles (is optimal for certain situations)
 let g:neocomplete#enable_auto_select = 0
-                                        
+
 " toggle the auto select feature
 function! ToggleNeoComplete()
   if !g:neocomplete#disable_auto_complete && g:neocomplete#enable_auto_select
@@ -1024,7 +1019,7 @@ function! ToggleNeoComplete()
   endif
 endfunction
 nnoremap <silent><Leader>ea :call ToggleNeoComplete()<CR>
-   
+
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -1517,7 +1512,7 @@ let g:unite_source_menu_menus.code.command_candidates = [
     \]
 nnoremap <silent>[menu]p :Unite -silent -winheight=42 menu:code<CR>
 " }}}
- 
+
 " reST menu {{{
 let g:unite_source_menu_menus.rest = {
     \ 'description' : '           reStructuredText
@@ -1531,7 +1526,7 @@ let g:unite_source_menu_menus.rest.command_candidates = [
     \]
 nnoremap <silent>[menu]r :Unite -silent menu:rest<CR>
 " }}}
- 
+
 " bookmarks menu {{{
 let g:unite_source_menu_menus.bookmarks = {
     \ 'description' : '      bookmarks
@@ -1662,7 +1657,7 @@ let g:unite_source_menu_menus.vim.command_candidates = [
         \'Unite -default-action=sigkill -start-insert process'],
     \['• launch executable (dmenu like)',
         \'Unite -start-insert launcher'],
-    \]  
+    \]
 nnoremap <silent>[menu]v :Unite menu:vim -silent -start-insert<CR>
 " }}}
 
@@ -1730,7 +1725,7 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#source('file_mru,file_rec,file_rec/async,grep,locate',
             \ 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/'], '\|'))
-call unite#custom#source('file_rec/async', 'ignore_globs', 
+call unite#custom#source('file_rec/async', 'ignore_globs',
     \ ['*.jpg', '*.gif', '*.png', '*.pdf', '*.ico', '*.ttf'
     \   , '.idea/**', 'data/**', 'logs/**', 'vendor*/**'])
 
@@ -1936,7 +1931,7 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 
 " t-yuki/vim-go-coverlay
-au FileType go nmap <leader>c <Plug>(go-coverlay) 
+au FileType go nmap <leader>c <Plug>(go-coverlay)
 au FileType go nmap <leader>C <Plug>(go-clearlay)
 
 let g:tagbar_type_go = {
@@ -2039,14 +2034,14 @@ autocmd BufRead,BufNewFile /etc/php/*.ini set syntax=dosini
 
 " nginx {{{
 
-au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* 
+au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/*
     \ if &ft == '' | setfiletype nginx | endif
 
 " }}}
 
 " puppet {{{
 
-au BufRead,BufNewFile /etc/puppet/*.conf 
+au BufRead,BufNewFile /etc/puppet/*.conf
     \ if &ft == '' | setfiletype dosini | endif
 
 " }}}
