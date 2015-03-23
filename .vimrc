@@ -271,8 +271,7 @@ NeoBundle  'Lokaltog/vim-easymotion'
 
 " majutsushi/tagbar {{{
 
-NeoBundleLazy  'majutsushi/tagbar', {'autoload':
-            \ {'filetypes': ['go', 'python', 'php']}} 
+NeoBundleLazy 'majutsushi/tagbar'
 
 " }}}
 
@@ -2027,8 +2026,8 @@ augroup END
 
 " PHP {{{
 
-autocmd BufRead,BufNewFile /etc/php/*.conf set syntax=dosini
-autocmd BufRead,BufNewFile /etc/php/*.ini set syntax=dosini
+autocmd BufRead,BufNewFile /etc/php*/*.conf set syntax=dosini
+autocmd BufRead,BufNewFile /etc/php*/*.ini set syntax=dosini
 
 " }}}
 
