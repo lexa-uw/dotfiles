@@ -147,10 +147,6 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundleLazy 'klen/python-mode', {'autoload': {'filetypes': ['python']}}
 " Admin virtualenvs
 NeoBundle 'jmcantrell/vim-virtualenv'
-" Show indent lines
-NeoBundleLazy 'Yggdroot/indentLine', {'autoload':
-            \ {'filetypes': ['python', 'php', 'phtml', 'json',
-            \ 'html', 'xhtml', 'js', 'rst', 'md', 'css', 'nginx']}}
 " Show reports from coverage.py
 NeoBundleLazy 'alfredodeza/coveragepy.vim', {'autoload': {'filetypes': ['python']}}
 " Sort imports
@@ -180,18 +176,8 @@ NeoBundle 'scrooloose/syntastic'
 
 " Autocompletion of (, [, {, ', ", ...
 NeoBundle 'delimitMate.vim'
-"
-" to-remove
-" " Smart and fast date changer
-" NeoBundle 'tpope/vim-speeddating'
-"
 " to surround vim objects with a pair of identical chars
 NeoBundle 'tpope/vim-surround'
-"
-" to-remove
-" " extend repetitions by the 'dot' key
-" NeoBundle 'tpope/vim-repeat'
-"
 " toggle comments
 NeoBundle 'tomtom/tcomment_vim', { 'autoload' : {'commands': 'TComment'} }
 " smart digraphs insertion
@@ -230,7 +216,7 @@ NeoBundleLazy 'othree/html5.vim', {'autoload':
 NeoBundleLazy 'mattn/emmet-vim', {'autoload':
             \ {'filetypes': ['html', 'xhtml', 'css', 'xml', 'xls', 'markdown']}}
 
-NeoBundle 'kchmck/vim-coffee-script',{'autoload' : {
+NeoBundleLazy 'kchmck/vim-coffee-script',{'autoload' : {
             \ 'commands' : [
                              \ 'CoffeeCompile', 'CoffeeLint', 'CoffeeMake',
                              \ 'CoffeeRun', 'CoffeeWatch'],
@@ -248,6 +234,10 @@ NeoBundleLazy 'vim-scripts/zoomwintab.vim', {'autoload' :
             \{'commands' : 'ZoomWinTabToggle'}}
 " easily window resizing
 NeoBundle 'jimsei/winresizer'
+" Show indent lines
+NeoBundleLazy 'Yggdroot/indentLine', {'autoload':
+            \ {'filetypes': ['python', 'php', 'phtml', 'json',
+            \ 'html', 'xhtml', 'js', 'rst', 'md', 'css', 'nginx']}}
 
 " }}}
 
@@ -271,7 +261,8 @@ NeoBundle  'Lokaltog/vim-easymotion'
 
 " majutsushi/tagbar {{{
 
-NeoBundleLazy 'majutsushi/tagbar'
+NeoBundleLazy 'majutsushi/tagbar', {'autoload':
+            \ {'filetypes': ['php', 'go', 'python', 'js']}} 
 
 " }}}
 
@@ -309,13 +300,13 @@ NeoBundleLazy 't-yuki/vim-go-coverlay', {'autoload': {'filetypes': ['go']}}
 
 " nginx {{{
 
-NeoBundle 'nginx.vim', {'autoload': {'filetypes': ['nginx']}}
+NeoBundleLazy 'nginx.vim', {'autoload': {'filetypes': ['nginx']}}
 
 " }}}
 
 " puppet {{{
 
-NeoBundle 'rodjek/vim-puppet', {'autoload': {'filetypes': ['puppet']}}
+NeoBundleLazy 'rodjek/vim-puppet', {'autoload': {'filetypes': ['puppet']}}
 
 " }}}
 
@@ -378,9 +369,8 @@ set ttimeoutlen=0               " toggle between modes almost instantly
 set backspace=indent,eol,start  " defines the backspace key behavior
 set virtualedit=all             " to edit where there is no actual character
 set more                        " to show pages using `more` in command outpouts
-" Line numbers. Also see "Toggle line numbers"
+" Line numbers. Also see 'Toggle line numbers'
 set number
-set relativenumber
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,winpos,slash
 
 " }}}
@@ -2040,6 +2030,8 @@ au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/*
 
 " puppet {{{
 
+au BufRead,BufNewFile /etc/puppet/*.pp
+    \ if &ft == '' | setfiletype puppet | endif
 au BufRead,BufNewFile /etc/puppet/*.conf
     \ if &ft == '' | setfiletype dosini | endif
 
