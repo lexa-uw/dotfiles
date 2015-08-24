@@ -1779,7 +1779,7 @@ let g:vimfiler_data_directory = $HOME.'/.vim/tmp/vimfiler'
 
 map <F9> :Vinarise<CR>
 
-let g:vinarise_enable_auto_detect = 1
+let g:vinarise_enable_auto_detect = 0
 
 au FileType vinarise let g:airline_section_warning = ''
 
