@@ -472,8 +472,7 @@ function MoveTabLeft()
 endfunction
 
 function MoveTabRight()
-    let current_tab = tabpagenr()
-    execute 'tabmove' current_tab
+    execute 'tabmove' tabpagenr() + 1
 endfunction
 
 map <Leader>tl :call MoveTabLeft()<CR>
