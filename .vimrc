@@ -310,6 +310,10 @@ NeoBundleLazy 'rodjek/vim-puppet', {'autoload': {'filetypes': ['puppet']}}
 
 " }}}
 
+" LargeFile {{{
+NeoBundle 'LargeFile.vim'
+" }}}
+
 " END BUNDLES }}}
 
 call neobundle#end()
@@ -2040,6 +2044,10 @@ au BufRead,BufNewFile /etc/puppet/*.conf
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+" }}}
+
+" icinga2 {{{
+autocmd FileType icinga2 setlocal ts=2 sts=2 sw=2 expandtab
 " }}}
 
 " END FILETYPES }}}
