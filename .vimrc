@@ -311,7 +311,7 @@ NeoBundleLazy 'rodjek/vim-puppet', {'autoload': {'filetypes': ['puppet']}}
 " }}}
 
 " LargeFile {{{
-NeoBundle 'LargeFile.vim'
+NeoBundle 'vim-scripts/LargeFile'
 " }}}
 
 " restore_view.vim {{{
