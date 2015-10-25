@@ -262,14 +262,14 @@ NeoBundle  'Lokaltog/vim-easymotion'
 " majutsushi/tagbar {{{
 
 NeoBundleLazy 'majutsushi/tagbar', {'autoload':
-            \ {'filetypes': ['php', 'go', 'python', 'js']}} 
+            \ {'filetypes': ['php', 'go', 'python', 'js']}}
 
 " }}}
 
 " othree/xml.vim {{{
 
 NeoBundleLazy 'othree/xml.vim', {'autoload':
-            \ {'filetypes': ['xml', 'sgml', 'xslt']}}   
+            \ {'filetypes': ['xml', 'sgml', 'xslt']}}
 
 " }}}
 
@@ -312,6 +312,10 @@ NeoBundleLazy 'rodjek/vim-puppet', {'autoload': {'filetypes': ['puppet']}}
 
 " LargeFile {{{
 NeoBundle 'LargeFile.vim'
+" }}}
+
+" restore_view.vim {{{
+NeoBundle 'restore_view.vim'
 " }}}
 
 " END BUNDLES }}}
@@ -1899,6 +1903,7 @@ let g:pdv_cfg_License   = 'Provided under the GPL (http://www.gnu.org/copyleft/g
 " GO {{{
 
 let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 0
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -1909,6 +1914,8 @@ let g:go_auto_type_info = 1
 let g:go_fmt_fail_silently = 1
 
 au FileType go nmap <leader>gi :GoImport <c-r>=expand("<cword>")<CR><Esc>
+au FileType go nmap <Leader>gf :mkview<CR>:GoFmt<CR>:loadview<CR>
+au FileType go nmap <Leader>w  :mkview<CR>:GoFmt<CR>:update<CR>:loadview<CR>
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
