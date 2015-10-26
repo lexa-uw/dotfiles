@@ -1913,25 +1913,26 @@ let g:go_highlight_build_constraints = 1
 let g:go_auto_type_info = 1
 let g:go_fmt_fail_silently = 1
 
+" changed <Leader>w behavior for golang files
+au FileType go nmap <Leader>w  :mkview<CR>:GoFmt<CR>:update<CR>:loadview<CR>
 au FileType go nmap <leader>gi :GoImport <c-r>=expand("<cword>")<CR><Esc>
 au FileType go nmap <Leader>gf :mkview<CR>:GoFmt<CR>:loadview<CR>
-au FileType go nmap <Leader>w  :mkview<CR>:GoFmt<CR>:update<CR>:loadview<CR>
-au FileType go nmap <Leader>s <Plug>(go-implements)
-au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gs <Plug>(go-implements)
+au FileType go nmap <Leader>gi <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>gr <Plug>(go-run)
+au FileType go nmap <leader>gb <Plug>(go-build)
+au FileType go nmap <leader>gt <Plug>(go-test)
 " au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nmap <Leader>gds <Plug>(go-def-split)
+au FileType go nmap <Leader>gdv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>gdt <Plug>(go-def-tab)
+au FileType go nmap <Leader>ge <Plug>(go-rename)
 
 " t-yuki/vim-go-coverlay
-au FileType go nmap <leader>c <Plug>(go-coverlay)
-au FileType go nmap <leader>C <Plug>(go-clearlay)
+au FileType go nmap <leader>gc <Plug>(go-coverlay)
+au FileType go nmap <leader>gC <Plug>(go-clearlay)
 
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
