@@ -2021,6 +2021,9 @@ au BufRead,BufNewFile *.go set filetype=go
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 augroup go_autocmd
     autocmd FileType go set foldmethod=syntax
+    autocmd FileType go set foldnestmax=10
+    autocmd FileType go set foldenable
+    autocmd FileType go set foldlevel=0
 augroup END
 
 " }}}
