@@ -907,35 +907,32 @@ let g:EasyDigraph_nmap = '<Leader>dd'
 
 " Fugitive {{{
 
-nnoremap <Leader>gn :Unite output:echo\ system("git\ init")<CR>
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gw :Gwrite<CR>
-nnoremap <Leader>go :Gread<CR>
-nnoremap <Leader>gR :Gremove<CR>
-nnoremap <Leader>gm :Gmove<Space>
+nnoremap <Leader>gB :Gblame<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gB :Gbrowse<CR>
-nnoremap <Leader>gp :Git! push<CR>
-nnoremap <Leader>gP :Git! pull<CR>
-nnoremap <Leader>gi :Git!<Space>
 nnoremap <Leader>ge :Gedit<CR>
 nnoremap <Leader>gE :Gedit<Space>
-nnoremap <Leader>gl :exe "silent Glog <Bar> Unite -no-quit
-            \ quickfix"<CR>:redraw!<CR>
-nnoremap <Leader>gL :exe "silent Glog -- <Bar> Unite -no-quit
-            \ quickfix"<CR>:redraw!<CR>
-nnoremap <Leader>gt :!tig<CR>:redraw!<CR>
-nnoremap <Leader>gS :exe "silent !shipit"<CR>:redraw!<CR>
 nnoremap <Leader>gg :exe 'silent Ggrep -i '.input("Pattern: ")<Bar>Unite
-            \ quickfix -no-quit<CR>
 nnoremap <Leader>ggm :exe 'silent Glog --grep='.input("Pattern: ").' <Bar>
             \Unite -no-quit quickfix'<CR>
 nnoremap <Leader>ggt :exe 'silent Glog -S='.input("Pattern: ").' <Bar>
             \Unite -no-quit quickfix'<CR>
 
 nnoremap <Leader>ggc :silent! Ggrep -i<Space>
+nnoremap <Leader>gi :Git!<Space>
+nnoremap <Leader>gl :exe "silent Glog <Bar> Unite -no-quit
+            \ quickfix"<CR>:redraw!<CR>
+nnoremap <Leader>gL :exe "silent Glog -- <Bar> Unite -no-quit
+            \ quickfix"<CR>:redraw!<CR>
+nnoremap <Leader>gm :Gmove<Space>
+nnoremap <Leader>gn :Unite output:echo\ system("git\ init")<CR>
+nnoremap <Leader>go :Gread<CR>
+nnoremap <Leader>gp :Git! push<CR>
+nnoremap <Leader>gP :Git! pull<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gR :Gremove<CR>
+nnoremap <Leader>gt :!tig<CR>:redraw!<CR>
+nnoremap <Leader>gw :Gwrite<CR>
 
 " for the diffmode
 noremap <Leader>du :diffupdate<CR>
@@ -1915,24 +1912,24 @@ let g:go_fmt_fail_silently = 1
 
 " changed <Leader>w behavior for golang files
 au FileType go nmap <Leader>w  :mkview<CR>:GoFmt<CR>:update<CR>:loadview<CR>
-au FileType go nmap <leader>gi :GoImport <c-r>=expand("<cword>")<CR><Esc>
-au FileType go nmap <Leader>gf :mkview<CR>:GoFmt<CR>:loadview<CR>
-au FileType go nmap <Leader>gs <Plug>(go-implements)
-au FileType go nmap <Leader>gi <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <leader>gr <Plug>(go-run)
-au FileType go nmap <leader>gb <Plug>(go-build)
-au FileType go nmap <leader>gt <Plug>(go-test)
-" au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <Leader>gds <Plug>(go-def-split)
-au FileType go nmap <Leader>gdv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>gdt <Plug>(go-def-tab)
-au FileType go nmap <Leader>ge <Plug>(go-rename)
 
-" t-yuki/vim-go-coverlay
-au FileType go nmap <leader>gc <Plug>(go-coverlay)
-au FileType go nmap <leader>gC <Plug>(go-clearlay)
+au FileType go nmap <leader>gob <Plug>(go-build)
+" au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <leader>goc <Plug>(go-coverlay)
+au FileType go nmap <leader>goC <Plug>(go-clearlay)
+au FileType go nmap <Leader>god <Plug>(go-doc)
+au FileType go nmap <Leader>gods <Plug>(go-def-split)
+au FileType go nmap <Leader>godt <Plug>(go-def-tab)
+au FileType go nmap <Leader>godv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>goe <Plug>(go-rename)
+au FileType go nmap <Leader>gof :mkview<CR>:GoFmt<CR>:loadview<CR><Esc>
+au FileType go nmap <Leader>gog :GoGenerate<CR><Esc>
+au FileType go nmap <leader>goi :GoImport <c-r>=expand("<cword>")<CR><Esc>
+au FileType go nmap <leader>gor <Plug>(go-run)
+au FileType go nmap <leader>goR :GoRun<CR>
+au FileType go nmap <Leader>gos <Plug>(go-implements)
+au FileType go nmap <leader>got <Plug>(go-test)
+au FileType go nmap <Leader>gov <Plug>(go-doc-vertical)
 
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
