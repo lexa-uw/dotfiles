@@ -380,6 +380,7 @@ set more                        " to show pages using `more` in command outpouts
 " Line numbers. Also see 'Toggle line numbers'
 set number
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,winpos,slash
+set shell=bash
 
 " }}}
 
