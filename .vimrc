@@ -1053,7 +1053,7 @@ let g:po_translator = "user name <email@host.com>"
 
 " PythonMode {{{ -------------------------------------------------------------
 
-nmap <silent><Leader>n :PymodeLint<CR>
+au FileTYpe python nmap <silent><Leader>n :PymodeLint<CR>
 
 let g:pymode_breakpoint_bind = '<Leader>B'
 
