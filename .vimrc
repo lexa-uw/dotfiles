@@ -296,6 +296,14 @@ NeoBundleLazy 'fatih/vim-go', {'autoload': {'filetypes': ['go']}}
 NeoBundleLazy 'nsf/gocode', {'autoload': {'filetypes': ['go']}}
 NeoBundleLazy 't-yuki/vim-go-coverlay', {'autoload': {'filetypes': ['go']}}
 
+" for correct go code format on save file
+" https://github.com/fatih/vim-go/issues/502
+" https://github.com/fatih/vim-go/issues/502#issuecomment-137429832
+" fix https://github.com/luan/vimfiles/commit/b2d93276f3585b73783a3759970b4c33e5145137
+NeoBundleLazy 'google/vim-maktaba', {'autoload': {'filetypes': ['go']}} 
+NeoBundleLazy 'google/vim-codefmt', {'autoload': {'filetypes': ['go']}} 
+NeoBundleLazy 'google/vim-glaive', {'autoload': {'filetypes': ['go']}} 
+
 " }}}
 
 " nginx {{{
@@ -1118,7 +1126,7 @@ nnoremap <silent> g<C-h> :UniteWithCursorWord -silent help<CR>
 nnoremap <silent><Leader>; :Unite -silent -toggle
             \ grep:%::FIXME\|TODO\|NOTE\|XXX\|COMBAK\|@todo<CR>
 " outlines (also ctags)
-nnoremap <silent><Leader>t :Unite -silent -vertical -winwidth=40
+nnoremap <silent><Leader>T :Unite -silent -vertical -winwidth=40
             \ -direction=topleft -toggle outline<CR>
 " junk files
 nnoremap <silent><Leader>d :Unite -silent junkfile/new junkfile<CR>
@@ -1860,6 +1868,7 @@ map <Leader><C-k> <Plug>(easymotion-k)
 let g:tagbar_autofocus=1
 let g:tagbar_iconchars= ['+', '-']
 nnoremap <silent> <C-t> :TagbarToggle<CR>
+map <Leader>t :TagbarToggle<CR>
 
 " }}}
 
@@ -1911,8 +1920,17 @@ let g:go_highlight_build_constraints = 1
 let g:go_auto_type_info = 1
 let g:go_fmt_fail_silently = 1
 
-" changed <Leader>w behavior for golang files
-au FileType go nmap <Leader>w  :mkview<CR>:GoFmt<CR>:update<CR>:loadview<CR>
+" GoFmt {{{
+
+augroup go_autoformat
+    autocmd!
+    autocmd FileType go execute(':AutoFormatBuffer')
+augroup END
+
+" }}}
+
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
 
 au FileType go nmap <leader>gob <Plug>(go-build)
 " au FileType go nmap <leader>c <Plug>(go-coverage)
@@ -1925,7 +1943,7 @@ au FileType go nmap <Leader>godv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>goe <Plug>(go-rename)
 au FileType go nmap <Leader>gof :mkview<CR>:GoFmt<CR>:loadview<CR><Esc>
 au FileType go nmap <Leader>gog :GoGenerate<CR><Esc>
-au FileType go nmap <leader>goi :GoImport <c-r>=expand("<cword>")<CR><Esc>
+au FileType go nmap <leader>goi :GoImports<CR>
 au FileType go nmap <leader>gor <Plug>(go-run)
 au FileType go nmap <leader>goR :GoRun<CR>
 au FileType go nmap <Leader>gos <Plug>(go-implements)
