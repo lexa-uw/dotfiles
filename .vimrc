@@ -300,9 +300,9 @@ NeoBundleLazy 't-yuki/vim-go-coverlay', {'autoload': {'filetypes': ['go']}}
 " https://github.com/fatih/vim-go/issues/502
 " https://github.com/fatih/vim-go/issues/502#issuecomment-137429832
 " fix https://github.com/luan/vimfiles/commit/b2d93276f3585b73783a3759970b4c33e5145137
-NeoBundleLazy 'google/vim-maktaba', {'autoload': {'filetypes': ['go']}} 
-NeoBundleLazy 'google/vim-codefmt', {'autoload': {'filetypes': ['go']}} 
-NeoBundleLazy 'google/vim-glaive', {'autoload': {'filetypes': ['go']}} 
+NeoBundleLazy 'google/vim-maktaba', {'autoload': {'filetypes': ['go']}}
+NeoBundleLazy 'google/vim-codefmt', {'autoload': {'filetypes': ['go']}}
+NeoBundleLazy 'google/vim-glaive', {'autoload': {'filetypes': ['go']}}
 
 " }}}
 
@@ -389,6 +389,7 @@ set more                        " to show pages using `more` in command outpouts
 set number
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,winpos,slash
 set shell=bash
+set completeopt-=preview
 
 " }}}
 
@@ -1925,6 +1926,7 @@ let g:go_fmt_fail_silently = 1
 augroup go_autoformat
     autocmd!
     autocmd FileType go execute(':AutoFormatBuffer')
+    autocmd FileType go set foldmethod=syntax
 augroup END
 
 " }}}
