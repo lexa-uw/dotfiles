@@ -327,6 +327,11 @@ NeoBundle 'vim-scripts/LargeFile'
 NeoBundle 'restore_view.vim'
 " }}}
 
+" tmux {{{
+NeoBundle 'tmux-plugins/vim-tmux'
+NeoBundle 'tmux-plugins/vim-tmux-focus-events'
+" }}}
+
 " END BUNDLES }}}
 
 call neobundle#end()
