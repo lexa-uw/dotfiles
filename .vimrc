@@ -225,6 +225,31 @@ NeoBundleLazy 'kchmck/vim-coffee-script',{'autoload' : {
 
 " }}}
 
+" JavaScript {{{
+
+" Syntax
+NeoBundleLazy 'othree/yajs.vim', {
+            \ 'autoload':{'filetypes':['javascript', 'javascript.jsx']}}
+NeoBundle 'othree/es.next.syntax.vim'
+				\ , { 'depends': ['othree/yajs.vim'] }
+" React
+NeoBundle 'mxw/vim-jsx'
+				\ , { 'depends': ['othree/yajs.vim'] }
+
+" Indent
+NeoBundle 'gavocanov/vim-js-indent'
+				\ , { 'depends': ['othree/yajs.vim'] }
+
+" JSDoc
+NeoBundle 'heavenshell/vim-jsdoc'
+				\ , { 'depends': ['othree/yajs.vim', 'mxw/vim-jsx'] }
+
+" Function parameter completion
+NeoBundleLazy 'othree/jspc.vim'
+				\ , { 'depends': ['othree/yajs.vim'] }
+
+" }}}
+
 " GUI {{{
 
 " A better looking status line
@@ -1090,8 +1115,8 @@ nmap <silent><Leader>N :SyntasticCheck<CR>:Errors<CR>
 
 let g:syntastic_python_pylint_exe = "pylint2"
 let g:syntastic_mode_map = { 'mode': 'active',
-            \ 'active_filetypes': [],
-            \ 'passive_filetypes': ['python'] }
+            \ 'active_filetypes': ['javascript'],
+            \ 'passive_filetypes': ['go', 'python'] }
 
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='w'
@@ -1135,8 +1160,6 @@ nnoremap <silent><Leader>; :Unite -silent -toggle
 " outlines (also ctags)
 nnoremap <silent><Leader>T :Unite -silent -vertical -winwidth=40
             \ -direction=topleft -toggle outline<CR>
-" junk files
-nnoremap <silent><Leader>d :Unite -silent junkfile/new junkfile<CR>
 
 " menus {{{
 let g:unite_source_menu_menus = {}
@@ -1938,7 +1961,6 @@ augroup END
 " }}}
 
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
 
 au FileType go nmap <leader>gob <Plug>(go-build)
 " au FileType go nmap <leader>c <Plug>(go-coverage)
@@ -1985,6 +2007,21 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
+" }}}
+
+" JavaScript {{{
+
+" JSDoc
+let g:jsdoc_enable_es6 = 1
+autocmd FileType javascript nnoremap <leader>db :JsDoc<cr>
+
+" jsx(reactjx) support
+let g:jsx_ext_required = 0
+
+" Linter
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 " }}}
 
@@ -2083,6 +2120,12 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " icinga2 {{{
 autocmd FileType icinga2 setlocal ts=2 sts=2 sw=2 expandtab
+" }}}
+
+" JavaScript {{{
+
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+
 " }}}
 
 " END FILETYPES }}}
