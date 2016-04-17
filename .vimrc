@@ -223,6 +223,14 @@ NeoBundleLazy 'kchmck/vim-coffee-script',{'autoload' : {
             \ 'filetypes' : ['coffee']
             \ }}
 
+" Jade
+NeoBundleLazy 'digitaltoad/vim-pug'
+            \, { 'autoload':{'filetypes':['jade', 'pug']}}
+
+" Stylus
+NeoBundleLazy 'wavded/vim-stylus'
+            \, { 'autoload':{'filetypes':['stylus']}}
+
 " }}}
 
 " JavaScript {{{
@@ -2125,6 +2133,24 @@ autocmd FileType icinga2 setlocal ts=2 sts=2 sw=2 expandtab
 " JavaScript {{{
 
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+
+" }}}
+
+" Pug {{{
+
+autocmd BufNewFile,BufReadPost *.pug set filetype=pug
+autocmd BufNewFile,BufReadPost *.jade set filetype=pug
+
+autocmd FileType pug setlocal ts=2 sts=2 sw=2 expandtab
+
+" }}}
+
+" Stylus {{{
+
+autocmd BufNewFile,BufReadPost *.styl set filetype=stylus
+autocmd BufNewFile,BufReadPost *.stylus set filetype=stylus
+
+autocmd FileType stylus setlocal ts=2 sts=2 sw=2 expandtab
 
 " }}}
 
