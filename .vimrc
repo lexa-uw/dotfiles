@@ -429,6 +429,7 @@ set number
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,winpos,slash
 set shell=bash
 set completeopt-=preview
+set modeline
 
 " }}}
 
