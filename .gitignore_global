@@ -1,0 +1,12 @@
+**/docker-compose.override*.yml
+**/inventory/develop
+**/inventory/development
+**/inventory/group_vars/develop.yml
+**/var/
+*.icloud
+.DS_Store
+.env
+.idea
+node_modules.nosync
+var/
+vendor.nosync
