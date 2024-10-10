@@ -8,6 +8,8 @@
 " NEOBUNDLE {{{ ===============================================================
 
 set nocompatible             " No to the total compatibility with the ancient vi
+filetype plugin indent on    " Indent and plugins by filetype
+syntax enable                " enable the syntax highlight
 
 " NeoBundle auto-installation and setup {{{
 
@@ -385,7 +387,6 @@ NeoBundleCheck
 
 " }}}
 
-filetype plugin indent on      " Indent and plugins by filetype
 
 " END NEOBUNDLE }}}
 
@@ -589,7 +590,6 @@ inoremap <C-h>  <left>
 
 " Colorscheme {{{
 
-syntax enable                  " enable the syntax highlight
 set background=dark            " set a dark background
 set t_Co=256                   " 256 colors for the terminal
 colorscheme zenburn
